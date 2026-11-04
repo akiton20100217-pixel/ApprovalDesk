@@ -3,11 +3,13 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-public class AppRejSystem : MonoBehaviour
+public class ApprovalRejectSystem : MonoBehaviour
 {
     [Header("*** Approval Reject Button ***")]
     [SerializeField] private Button ApprovalButton;
     [SerializeField] private Button RejectButton;
+
+    public ProposalInstance proposalInstance; // ProposalInstanceスクリプトの参照を追加
 
     void Start()
     {
@@ -16,7 +18,7 @@ public class AppRejSystem : MonoBehaviour
         RegisterPointerUpEvent(RejectButton, OnRejectButtonPointerUp);
     }
 
-    //ボタンに PointerUp（離した瞬間）イベントを動的に登録する汎用メソッド
+    //ボタンに PointerUp（離した瞬間）イベントを登録する汎用メソッド
     private void RegisterPointerUpEvent(Button button, UnityAction<BaseEventData> action)
     {
         if (button == null) 
@@ -43,12 +45,24 @@ public class AppRejSystem : MonoBehaviour
     private void OnApprovalButtonPointerUp(BaseEventData data)
     {
         Debug.Log("Approval button pressed.");
-        // your approval logic here
+
+        proposalInstance._ProposalCount++;
+        if (proposalInstance._ProposalCount >= 5) //←この5は後々、変数で管理するように変更する予定
+        {
+            Debug.Log("Game Clear!");
+            // ゲームクリアの処理をここに追加
+        }
     }
 
     private void OnRejectButtonPointerUp(BaseEventData data)
     {
         Debug.Log("Reject button pressed.");
-        // your rejection logic here
+
+        proposalInstance._ProposalCount++;
+        if (proposalInstance._ProposalCount >= 5)
+        {
+            Debug.Log("Game Clear!");
+            // ゲームクリアの処理をここに追加
+        }
     }
 }
