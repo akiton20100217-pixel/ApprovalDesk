@@ -9,6 +9,7 @@ public class ApprovalRejectSystem : MonoBehaviour
     [SerializeField] private Button ApprovalButton;
     [SerializeField] private Button RejectButton;
 
+    [Header("*** Proposal Instance Reference ***")]
     public ProposalInstance proposalInstance; // ProposalInstanceスクリプトの参照を追加
 
     void Start()
@@ -44,25 +45,38 @@ public class ApprovalRejectSystem : MonoBehaviour
 
     private void OnApprovalButtonPointerUp(BaseEventData data)
     {
-        Debug.Log("Approval button pressed.");
-
-        proposalInstance._ProposalCount++;
-        if (proposalInstance._ProposalCount >= 5) //←この5は後々、変数で管理するように変更する予定
-        {
-            Debug.Log("Game Clear!");
-            // ゲームクリアの処理をここに追加
-        }
+        Button();
+        //承認ボタンが押されたときの演出処理をここに追加
+        //Debug.Log("Approval button pressed.");
     }
 
     private void OnRejectButtonPointerUp(BaseEventData data)
     {
-        Debug.Log("Reject button pressed.");
+        Button();
+        //拒否ボタンが押されたときの演出処理をここに追加
+        //Debug.Log("Reject button pressed.");
+    }
 
-        proposalInstance._ProposalCount++;
-        if (proposalInstance._ProposalCount >= 5)
+    private void Button() //ボタンが押されたときの処理
+    {
+        //ボタンが押された(呼ばれた)→提案書カウント++→提案書を破棄する→ゲームクリア判定→(ゲームクリアではないなら)次の提案書を生成する
+
+        proposalInstance._ProposalCount++; //提案書カウント++
+        Destroy(proposalInstance._InstantProposal); //提案書を破棄する
+        //Debug.Log("Proposal destroyed.");
+
+        proposalInstance._IsProposalActive = false; //提案書がシーン内にない状態にする
+
+        //ゲームクリア判定
+        if (proposalInstance._ProposalCount >= 5) //5はクリアに必要な提案書数なので後々、変数で管理
         {
             Debug.Log("Game Clear!");
-            // ゲームクリアの処理をここに追加
+            //ゲームクリアの演出処理をここに追加
+        }
+        else
+        {
+            //演出処理が終了するまで待つ処理をここに追加する
+            proposalInstance.NextProposal(); //次の提案書を生成する
         }
     }
 }
