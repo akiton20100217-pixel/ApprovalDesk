@@ -13,14 +13,12 @@ MonoBehaviour:
   m_Name: ProposalMasterData
   m_EditorClassIdentifier: Assembly-CSharp::ProposalMasterData
   proposerName: Copilot
-  proposalContent: 
-  ApprovalParameters:
-  - 0
-  - 0
-  - 0
-  - 0
-  RejectParameters:
-  - 0
-  - 0
-  - 0
-  - 0
+  proposalContent: Are you planning to build a new power plant?
+  _approvalElectricity: 10
+  _approvalMoney: -30
+  _approvalSatisfaction: 5
+  _approvalReliability: 5
+  _rejectElectricity: -5
+  _rejectMoney: 20
+  _rejectSatisfaction: 0
+  _rejectReliability: -5

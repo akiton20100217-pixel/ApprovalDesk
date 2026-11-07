@@ -1,32 +1,48 @@
-using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ParameterManager : MonoBehaviour
 {
-    [SerializeField] private Scrollbar[] _parameters; // スライダーの配列
+    public int electricity = 50;
+    public int money = 50;
+    public int satisfaction = 50;
+    public int reliability = 50;
 
-    private bool AnyParameterEmpty = false;
-
-    // パラメータの変動値を取得するscriptable objectの参照
-
-    private void Start()
+    public void ApplyPropasal(ProposalMasterData proposalData, bool isApproved)
     {
-        //パラメータの初期値を設定するメソッド
-        for (int i = 0; i < _parameters.Length; i++)
+        if (isApproved)
         {
-            _parameters[i].value = 0.5f;
+            electricity += (int)proposalData._approvalElectricity;
+            money += (int)proposalData._approvalMoney;
+            satisfaction += (int)proposalData._approvalSatisfaction;
+            reliability += (int)proposalData._approvalReliability;
         }
+        else
+        {
+            electricity += (int)proposalData._rejectElectricity;
+            money += (int)proposalData._rejectMoney;
+            satisfaction += (int)proposalData._rejectSatisfaction;
+            reliability += (int)proposalData._rejectReliability;
+        }
+
+        ClampValue();
+
+        CheckParameters();
     }
 
-    private void Update()
+    void ClampValue()
     {
-        if (AnyParameterEmpty = _parameters.Any(parameter => parameter.value == 0))//スライダーの値が0のものがあるかチェック
-        {
-            Debug.Log("GameOver");
-            // ゲームオーバー処理をここに追加
-        }
+        money = Mathf.Clamp(money, 0, 100);
+        electricity = Mathf.Clamp(electricity, 0, 100);
+        satisfaction = Mathf.Clamp(satisfaction, 0, 100);
+        reliability = Mathf.Clamp(reliability, 0, 100);
     }
 
-    
+    void CheckParameters()
+    {
+        if (money <= 0 || electricity <= 0 || satisfaction <= 0 || reliability <= 0)
+        {
+            // Handle game over logic here
+            Debug.Log("Game Over!");
+        }
+    }
 }

@@ -264,6 +264,55 @@ RectTransform:
   m_AnchoredPosition: {x: 45, y: 40}
   m_SizeDelta: {x: 154.804, y: 126.234}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &212314193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 212314194}
+  - component: {fileID: 212314195}
+  m_Layer: 0
+  m_Name: UIParamata
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &212314194
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212314193}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 150, y: 182, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1925922185}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &212314195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212314193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b27971d0bd4310740b8360f6fbb3c7f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIParamata
+  parameterManager: {fileID: 451364596}
+  MoneyScrollbar: {fileID: 1096715864}
+  ElectricityScrollbar: {fileID: 1392316943}
+  SatisfactionScrollbar: {fileID: 942952386}
+  ReliabilityScrollbar: {fileID: 785405869}
 --- !u!1 &351615586
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,7 +432,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4309c9daf62b6a438958e9b25218dff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParameterManager
-  _parameters: []
+  electricity: 50
+  money: 50
+  satisfaction: 50
+  reliability: 50
 --- !u!1 &473860492
 GameObject:
   m_ObjectHideFlags: 0
@@ -1254,7 +1306,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 969068105}
   m_HandleRect: {fileID: 969068104}
   m_Direction: 2
-  m_Value: -0
+  m_Value: 0
   m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2054,6 +2106,8 @@ MonoBehaviour:
   ApprovalButton: {fileID: 473860494}
   RejectButton: {fileID: 609313835}
   proposalInstance: {fileID: 817015687}
+  proposalData: {fileID: 11400000, guid: f46265fc723a06c43923c29027c4619b, type: 2}
+  parameterManager: {fileID: 451364596}
 --- !u!4 &1409972674
 Transform:
   m_ObjectHideFlags: 0
@@ -2535,6 +2589,7 @@ Transform:
   - {fileID: 1409972674}
   - {fileID: 817015686}
   - {fileID: 451364595}
+  - {fileID: 212314194}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2072712074

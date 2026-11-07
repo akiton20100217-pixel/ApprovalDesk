@@ -10,8 +10,11 @@ public class ApprovalRejectSystem : MonoBehaviour
     [SerializeField] private Button RejectButton;
 
     [Header("*** Proposal Instance Reference ***")]
-    public ProposalInstance proposalInstance; // ProposalInstanceスクリプトの参照を追加
+    public ProposalInstance proposalInstance;
 
+    [Header("*** Parameter Manager Reference ***")]
+    public ProposalMasterData proposalData;
+    public ParameterManager parameterManager;
     void Start()
     {
         //各ボタンに「離した瞬間」のイベントを登録
@@ -46,15 +49,15 @@ public class ApprovalRejectSystem : MonoBehaviour
     private void OnApprovalButtonPointerUp(BaseEventData data)
     {
         Button();
-        //承認ボタンが押されたときの演出処理をここに追加
         //Debug.Log("Approval button pressed.");
+        parameterManager.ApplyPropasal(proposalData, true); //承認ボタンが押されたときのパラメータ変動処理
     }
 
     private void OnRejectButtonPointerUp(BaseEventData data)
     {
         Button();
-        //拒否ボタンが押されたときの演出処理をここに追加
         //Debug.Log("Reject button pressed.");
+        parameterManager.ApplyPropasal(proposalData, false); //拒否ボタンが押されたときのパラメータ変動処理
     }
 
     private void Button() //ボタンが押されたときの処理
