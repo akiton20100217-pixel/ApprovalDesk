@@ -6,20 +6,20 @@ using UnityEngine.Events;
 public class ApprovalRejectSystem : MonoBehaviour
 {
     [Header("*** Approval Reject Button ***")]
-    [SerializeField] private Button ApprovalButton;
-    [SerializeField] private Button RejectButton;
+    [SerializeField] private Button _ApprovalButton;
+    [SerializeField] private Button _RejectButton;
 
     [Header("*** Proposal Instance Reference ***")]
-    public ProposalInstance proposalInstance;
+    public ProposalInstance _ProposalInstance;
 
     [Header("*** Parameter Manager Reference ***")]
-    public ProposalMasterData proposalData;
-    public ParameterManager parameterManager;
+    public ProposalMasterData _ProposalData;
+    public ParameterManager _ParameterManager;
     void Start()
     {
         //各ボタンに「離した瞬間」のイベントを登録
-        RegisterPointerUpEvent(ApprovalButton, OnApprovalButtonPointerUp);
-        RegisterPointerUpEvent(RejectButton, OnRejectButtonPointerUp);
+        RegisterPointerUpEvent(_ApprovalButton, OnApprovalButtonPointerUp);
+        RegisterPointerUpEvent(_RejectButton, OnRejectButtonPointerUp);
     }
 
     //ボタンに PointerUp（離した瞬間）イベントを登録する汎用メソッド
@@ -48,30 +48,30 @@ public class ApprovalRejectSystem : MonoBehaviour
 
     private void OnApprovalButtonPointerUp(BaseEventData data)
     {
-        Button();
+        PushButton();
         //Debug.Log("Approval button pressed.");
-        parameterManager.ApplyPropasal(proposalData, true); //承認ボタンが押されたときのパラメータ変動処理
+        _ParameterManager.ApplyPropasal(_ProposalData, true); //承認ボタンが押されたときのパラメータ変動処理
     }
 
     private void OnRejectButtonPointerUp(BaseEventData data)
     {
-        Button();
+        PushButton();
         //Debug.Log("Reject button pressed.");
-        parameterManager.ApplyPropasal(proposalData, false); //拒否ボタンが押されたときのパラメータ変動処理
+        _ParameterManager.ApplyPropasal(_ProposalData, false); //拒否ボタンが押されたときのパラメータ変動処理
     }
 
-    private void Button() //ボタンが押されたときの処理
+    private void PushButton() //ボタンが押されたときの処理
     {
         //ボタンが押された(呼ばれた)→提案書カウント++→提案書を破棄する→ゲームクリア判定→(ゲームクリアではないなら)次の提案書を生成する
 
-        proposalInstance._ProposalCount++; //提案書カウント++
-        Destroy(proposalInstance._InstantProposal); //提案書を破棄する
+        _ProposalInstance._ProposalCount++; //提案書カウント++
+        Destroy(_ProposalInstance._InstantProposal); //提案書を破棄する
         //Debug.Log("Proposal destroyed.");
 
-        proposalInstance._IsProposalActive = false; //提案書がシーン内にない状態にする
+        _ProposalInstance._IsProposalActive = false; //提案書がシーン内にない状態にする
 
         //ゲームクリア判定
-        if (proposalInstance._ProposalCount >= 5) //5はクリアに必要な提案書数なので後々、変数で管理
+        if (_ProposalInstance._ProposalCount >= 5) //5はクリアに必要な提案書数なので後々、変数で管理
         {
             Debug.Log("Game Clear!");
             //ゲームクリアの演出処理をここに追加
@@ -79,7 +79,7 @@ public class ApprovalRejectSystem : MonoBehaviour
         else
         {
             //演出処理が終了するまで待つ処理をここに追加する
-            proposalInstance.NextProposal(); //次の提案書を生成する
+            _ProposalInstance.NextProposal(); //次の提案書を生成する
         }
     }
 }

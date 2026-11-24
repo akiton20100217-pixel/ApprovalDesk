@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "EventDataBase", menuName = "DataBase/EventDataBase")]
 public class EventDataBase : ScriptableObject
 {
-    public List<EventData> Events = new List<EventData>();
+    [FormerlySerializedAs("Events")] public List<EventData> _Events = new List<EventData>();
 }

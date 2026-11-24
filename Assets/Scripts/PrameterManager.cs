@@ -2,26 +2,26 @@ using UnityEngine;
 
 public class ParameterManager : MonoBehaviour
 {
-    public int electricity = 50;
-    public int money = 50;
-    public int satisfaction = 50;
-    public int reliability = 50;
+    public int _Electricity = 50;
+    public int _Money = 50;
+    public int _Satisfaction = 50;
+    public int _Reliability = 50;
 
     public void ApplyPropasal(ProposalMasterData proposalData, bool isApproved)
     {
         if (isApproved)
         {
-            electricity += (int)proposalData._approvalElectricity;
-            money += (int)proposalData._approvalMoney;
-            satisfaction += (int)proposalData._approvalSatisfaction;
-            reliability += (int)proposalData._approvalReliability;
+            _Electricity += (int)proposalData._ApprovalElectricity;
+            _Money += (int)proposalData._ApprovalMoney;
+            _Satisfaction += (int)proposalData._ApprovalSatisfaction;
+            _Reliability += (int)proposalData._ApprovalReliability;
         }
         else
         {
-            electricity += (int)proposalData._rejectElectricity;
-            money += (int)proposalData._rejectMoney;
-            satisfaction += (int)proposalData._rejectSatisfaction;
-            reliability += (int)proposalData._rejectReliability;
+            _Electricity += (int)proposalData._RejectElectricity;
+            _Money += (int)proposalData._RejectMoney;
+            _Satisfaction += (int)proposalData._RejectSatisfaction;
+            _Reliability += (int)proposalData._RejectReliability;
         }
 
         ClampValue();
@@ -31,15 +31,15 @@ public class ParameterManager : MonoBehaviour
 
     void ClampValue()
     {
-        money = Mathf.Clamp(money, 0, 100);
-        electricity = Mathf.Clamp(electricity, 0, 100);
-        satisfaction = Mathf.Clamp(satisfaction, 0, 100);
-        reliability = Mathf.Clamp(reliability, 0, 100);
+        _Money = Mathf.Clamp(_Money, 0, 100);
+        _Electricity = Mathf.Clamp(_Electricity, 0, 100);
+        _Satisfaction = Mathf.Clamp(_Satisfaction, 0, 100);
+        _Reliability = Mathf.Clamp(_Reliability, 0, 100);
     }
 
     void CheckParameters()
     {
-        if (money <= 0 || electricity <= 0 || satisfaction <= 0 || reliability <= 0)
+        if (_Money <= 0 || _Electricity <= 0 || _Satisfaction <= 0 || _Reliability <= 0)
         {
             // Handle game over logic here
             Debug.Log("Game Over!");

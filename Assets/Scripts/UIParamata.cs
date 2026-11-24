@@ -1,21 +1,22 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class UIParamata : MonoBehaviour
 {
-    [Header("*** Parameter Reference ***")]
-    public ParameterManager parameterManager;
+    [FormerlySerializedAs("parameterManager")] [Header("*** Parameter Reference ***")]
+    public ParameterManager _ParameterManager;
 
-    public Scrollbar MoneyScrollbar;
-    public Scrollbar ElectricityScrollbar;
-    public Scrollbar SatisfactionScrollbar;
-    public Scrollbar ReliabilityScrollbar;
+    [FormerlySerializedAs("MoneyScrollbar")] public Scrollbar _MoneyScrollbar;
+    [FormerlySerializedAs("ElectricityScrollbar")] public Scrollbar _ElectricityScrollbar;
+    [FormerlySerializedAs("SatisfactionScrollbar")] public Scrollbar _SatisfactionScrollbar;
+    [FormerlySerializedAs("ReliabilityScrollbar")] public Scrollbar _ReliabilityScrollbar;
 
     void Update()
     {
-        MoneyScrollbar.size = parameterManager.money / 100f;
-        ElectricityScrollbar.size = parameterManager.electricity / 100f;
-        SatisfactionScrollbar.size = parameterManager.satisfaction / 100f;
-        ReliabilityScrollbar.size = parameterManager.reliability / 100f;
+        _MoneyScrollbar.size = _ParameterManager._Money / 100f;
+        _ElectricityScrollbar.size = _ParameterManager._Electricity / 100f;
+        _SatisfactionScrollbar.size = _ParameterManager._Satisfaction / 100f;
+        _ReliabilityScrollbar.size = _ParameterManager._Reliability / 100f;
     }
 }

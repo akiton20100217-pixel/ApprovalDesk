@@ -16,7 +16,7 @@ public class EventData
     public int _AppSatisfaction;
     public int _AppTrust;
 
-    [Header("*** RejectParameta ***")]
+    [Header("*** Reject Parameta ***")]
     public int _RejPower;
     public int _RejMoney;
     public int _RejSatisfaction;
