@@ -1,10 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class EventManager : MonoBehaviour
 {
-    [FormerlySerializedAs("eventDataBase")] [SerializeField] private EventDataBase _EventDataBase;
+    [SerializeField] private EventDataBase _EventDataBase;
 
     private Dictionary<int, EventData> _EventDictionary;
 
@@ -14,6 +13,7 @@ public class EventManager : MonoBehaviour
 
         foreach (EventData data in _EventDataBase._Events)
         {
+            data._ID = _EventDataBase._Events.Count;
             _EventDictionary.Add(data._ID, data);
         }
     }
