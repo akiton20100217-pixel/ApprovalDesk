@@ -49,14 +49,12 @@ public class ApprovalRejectSystem : MonoBehaviour
     private void OnApprovalButtonPointerUp(BaseEventData data)
     {
         PushButton();
-        //Debug.Log("Approval button pressed.");
         _ParameterManager.ApplyPropasal(_ProposalData, true); //承認ボタンが押されたときのパラメータ変動処理
     }
 
     private void OnRejectButtonPointerUp(BaseEventData data)
     {
         PushButton();
-        //Debug.Log("Reject button pressed.");
         _ParameterManager.ApplyPropasal(_ProposalData, false); //拒否ボタンが押されたときのパラメータ変動処理
     }
 

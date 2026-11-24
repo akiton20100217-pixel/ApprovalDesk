@@ -1,16 +1,23 @@
+using System;
+using TMPro;
 using UnityEngine;
 
 public class ProposalInstance : MonoBehaviour
 {
+    //提案書の複製を作成するクラス
+    
     [Header("*** Proposal Instance Settings ***")]
     [SerializeField] private GameObject _ProposalPrefab;
     [SerializeField] private Transform _InstancePoint;
-    //[SerializeField] private float _ProposalSpeed = 1.0f; //提案書の移動速度(演出で使用予定)
     [SerializeField] private Canvas _Canvas; //キャンバスの参照を追加
 
     [HideInInspector]public bool _IsProposalActive; //提案書prefabがシーン内にあるか
     [HideInInspector]public int _ProposalCount; //ゲームクリアの判定に使う変数
     [HideInInspector]public GameObject _InstantProposal;
+
+    [Header("*** Proposal UI Settings ***")] //提案書の複製時の文章
+    [SerializeField]private TextMeshProUGUI _NameText;
+    [SerializeField]private TextMeshProUGUI _DescriptionText;
 
     void Start()
     {
@@ -24,11 +31,10 @@ public class ProposalInstance : MonoBehaviour
     {
         //提案書がシーン内にない場合、提案書を生成する
         if (_IsProposalActive == false)
-        {
+        { 
             _InstantProposal = Instantiate(_ProposalPrefab, _InstancePoint.position, Quaternion.identity, _Canvas.transform);
-            //Debug.Log("Proposal instantiated.");
+            _NameText.text = _ProposalCount.ToString(); //DataBaseから引っ張ってくる予定
             _IsProposalActive = true;
         }
-        return;
     }
 }

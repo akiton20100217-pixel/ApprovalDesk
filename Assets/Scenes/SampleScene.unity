@@ -1400,6 +1400,8 @@ MonoBehaviour:
   _IsProposalActive: 0
   _ProposalCount: 0
   _InstantProposal: {fileID: 0}
+  _NameText: {fileID: 517526582}
+  _DescriptionText: {fileID: 1916395832}
 --- !u!1 &905376345
 GameObject:
   m_ObjectHideFlags: 0
@@ -2103,11 +2105,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58b6b014006d540469127a3e8d13bafc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AppRejSystem
-  _ApprovalButton: {fileID: 0}
-  _RejectButton: {fileID: 0}
-  _ProposalInstance: {fileID: 0}
-  _ProposalData: {fileID: 0}
-  _ParameterManager: {fileID: 0}
+  _ApprovalButton: {fileID: 473860494}
+  _RejectButton: {fileID: 609313835}
+  _ProposalInstance: {fileID: 817015687}
+  _ProposalData: {fileID: 11400000, guid: f46265fc723a06c43923c29027c4619b, type: 2}
+  _ParameterManager: {fileID: 451364596}
 --- !u!4 &1409972674
 Transform:
   m_ObjectHideFlags: 0
@@ -2566,6 +2568,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1925922185}
+  - component: {fileID: 1925922186}
   m_Layer: 0
   m_Name: GameSceneManager
   m_TagString: Untagged
@@ -2592,6 +2595,18 @@ Transform:
   - {fileID: 212314194}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1925922186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925922184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 577321e863eaa1e49964bab34d88e58d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RandomEncounter
 --- !u!1 &2072712074
 GameObject:
   m_ObjectHideFlags: 0
