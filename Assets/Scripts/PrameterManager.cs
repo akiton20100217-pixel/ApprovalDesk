@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class ParameterManager : MonoBehaviour
 {
-    public int _Electricity = 50;
-    public int _Money = 50;
-    public int _Satisfaction = 50;
-    public int _Reliability = 50;
+    [Header("*** Parameters ***")]
+    public int _Electricity { get;　private set; } = 5;
+    public int _Money { get; private set; } = 50;
+    public int _Satisfaction { get; private set; } = 50;
+    public int _Reliability { get; private set; } = 50;
 
-    public void ApplyPropasal(ProposalMasterData proposalData, bool isApproved)
+    public void ApplyProposal(ProposalMasterData proposalData, bool isApproved)
     {
         if (isApproved)
         {

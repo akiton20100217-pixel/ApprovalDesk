@@ -4,7 +4,8 @@ using UnityEngine.UI;
 
 public class UIParamata : MonoBehaviour
 {
-    [FormerlySerializedAs("parameterManager")] [Header("*** Parameter Reference ***")]
+    [FormerlySerializedAs("parameterManager")] 
+    [Header("*** Parameter Reference ***")]
     public ParameterManager _ParameterManager;
 
     [FormerlySerializedAs("MoneyScrollbar")] public Scrollbar _MoneyScrollbar;

@@ -432,10 +432,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4309c9daf62b6a438958e9b25218dff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParameterManager
-  _Electricity: 50
-  _Money: 50
-  _Satisfaction: 50
-  _Reliability: 50
 --- !u!1 &473860492
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,6 +628,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 482577173}
   m_CullTransparentMesh: 1
+--- !u!1 &513455090
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 513455091}
+  - component: {fileID: 513455092}
+  m_Layer: 0
+  m_Name: EventManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &513455091
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513455090}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1925922185}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &513455092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513455090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbb298a3008699478fc557762968816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EventManager
+  _EventDataBase: {fileID: 11400000, guid: 0198ab1aa6dfc434ebab2f6f390bc84f, type: 2}
 --- !u!1 &517526580
 GameObject:
   m_ObjectHideFlags: 0
@@ -2593,6 +2634,7 @@ Transform:
   - {fileID: 817015686}
   - {fileID: 451364595}
   - {fileID: 212314194}
+  - {fileID: 513455091}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1925922186
